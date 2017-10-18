@@ -1,6 +1,6 @@
 # Data-Structures
 
-Repository holding my implementations of basic data structures and practice pro$
+Repository holding my implementations of basic data structures and practice problems
 
 # Notes
 
