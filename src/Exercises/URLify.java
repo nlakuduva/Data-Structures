@@ -20,12 +20,20 @@ public class URLify
 	
 	/*
 	 * Be careful. For char arrays, compare with '' NOT ""
+	 * Be careful. Sufficient space != exact amount of space
 	 * */
 	public static String URLify(String s, int length)
 	{
 		char[] input = s.toCharArray();
+		int spaces = 0;
+		for(int i = length-1; i >= 0; --i)
+		{
+			if (input[i] == ' ')
+				++spaces;
+		}
+		
 		int letterOrSpacePtr = length-1; 
-		int replacementPtr = s.length()-1;
+		int replacementPtr = (letterOrSpacePtr) + spaces*2;
 		while(letterOrSpacePtr >= 0 && replacementPtr >= 0)
 		{
 			if(input[letterOrSpacePtr] != ' ')
