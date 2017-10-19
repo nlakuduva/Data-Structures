@@ -9,7 +9,6 @@ public class PermutationCheck
 	 * One word vs. multiple words? White space?
 	 * 
 	 * */
-	
 	/* OPTION 1:
 	 * check if same length --> if not return false
 	 * create two hashmaps -> Space: O(n)
@@ -44,4 +43,58 @@ public class PermutationCheck
 	 * Time Complexity: O(n)
 	 * Space Complexity: O(1)
 	 */
+	
+	public static void main(String[] args)
+	{
+		// not case sensitive
+		assert(checkPermutation("dog", "God") == true);
+		// ignores spaces
+		assert(checkPermutation("ab cd e", "db aec") == true);
+		assert(checkPermutation("nandhini", "A Hind Inn") == true);
+		assert(checkPermutation("letters", "ESTERTL") == true);
+		assert(checkPermutation("coffee", "ofecef") == true);
+		assert(checkPermutation("", "") == true);
+		assert(checkPermutation("nandhini", "nnidain") == false);
+		assert(checkPermutation("nandhini", "njnidain") == false);
+//		assert(false);
+		
+		
+		System.out.println("Done.");
+	}
+	
+	public static boolean checkPermutation(String a, String b)
+	{
+		
+		byte[] letterCount = new byte[128];
+		
+		a = a.toLowerCase();
+		b = b.toLowerCase();
+		for(int i = 0; i < a.length(); i++) 
+		{
+			if(a.charAt(i) == ' ')
+				continue; 
+			
+			int index = a.charAt(i) - 'a';
+			++letterCount[index];
+		}
+		
+		for(int i = 0; i < b.length(); i++) 
+		{
+			if(b.charAt(i) == ' ')
+				continue; 
+			
+			int index = b.charAt(i) - 'a';
+			--letterCount[index];
+			if (letterCount[index] < 0)
+				return false;
+		}
+		
+		for (byte count: letterCount)
+		{
+			if(count > 0)
+				return false;
+		}
+		
+		return true;
+	}
 }
