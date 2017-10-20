@@ -1,4 +1,3 @@
-package Exercises;
 
 public class StringCompression 
 {

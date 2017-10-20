@@ -1,3 +1,4 @@
+package DataStructures;
 
 public class Node<T>
 {
@@ -12,6 +13,12 @@ public class Node<T>
 		previous = null;
 	}
 	
+	public Node() {
+		val = null;
+		next = null;
+		previous = null;
+	}
+
 	public T getVal()
 	{
 		return val;
@@ -42,6 +49,12 @@ public class Node<T>
 	public void setVal(T value)
 	{
 		val = value;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "" + val;
 	}
 
 }

@@ -1,12 +1,13 @@
+package DataStructures;
 
-public class MyArrayList<T>
+public class Set<T>
 {
 	private Object[] data;
 	private final int DEFAULT_SIZE = 10;
 	private final int GROWTH = DEFAULT_SIZE/2;
 	private int size;
 	
-	public MyArrayList()
+	public Set()
 	{
 		data = new Object[DEFAULT_SIZE];
 		size = 0;
@@ -21,17 +22,24 @@ public class MyArrayList<T>
 		return newArr;
 	}
 	
-	public void add(Object obj)
+	public boolean add(Object obj)
 	{
+		if(contains(obj))
+			return false;
+		
 		if(data.length-size < GROWTH)
 			data = growArray(GROWTH);
 		
 		data[size] = obj;
 		size++;
+		return true;
 	}
 	
-	public void add(int index, Object obj)
+	public boolean add(int index, Object obj)
 	{
+		if(contains(obj))
+			return false;
+		
 		if(index > size)
 			throw new ArrayIndexOutOfBoundsException();
 		
@@ -43,6 +51,7 @@ public class MyArrayList<T>
 		
 		data[index] = obj;
 		size++;
+		return true;
 	}
 	
 //	public Object remove()
@@ -85,7 +94,6 @@ public class MyArrayList<T>
 		
 		return -1;
 	}
-	
 	public Object remove(Object obj)
 	{
 		int index = searchByObject(obj);
@@ -146,3 +154,4 @@ public class MyArrayList<T>
 		return s;
 	}
 }
+

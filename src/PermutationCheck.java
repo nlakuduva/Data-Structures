@@ -1,4 +1,4 @@
-package Exercises;
+
 
 public class PermutationCheck 
 {

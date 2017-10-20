@@ -1,4 +1,3 @@
-package Exercises;
 
 import java.util.Arrays;
 
