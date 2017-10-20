@@ -40,18 +40,17 @@ public class OneAway
 	 * */
 	private static boolean checkIfOneAway(String original, String edited) {
 		int diff = edited.length() - original.length();
-		if(diff == 0)
-			return checkForSingleSubstitute(original, edited);
-		else if (diff == 1)
-			return checkForSingleAddition(original, edited); 
+		if(diff == 0 || diff == 1)
+			return checkForSingleMutation(original, edited);
 		else if (diff == -1)
-			return checkForSingleAddition(edited, original);
+			return checkForSingleMutation(edited, original);
 		else
 			return false;
 	}
 
-	private static boolean checkForSingleAddition(String original, String edited) 
+	private static boolean checkForSingleMutation(String original, String edited) 
 	{
+		boolean sameLength = (edited.length() - original.length() == 0);
 		boolean edit = false;
 		int originalIdx = 0;
 		for(int editedIdx = 0; editedIdx < edited.length(); ++editedIdx)
@@ -65,6 +64,9 @@ public class OneAway
 					return false;
 				else
 					edit = true;
+				
+				if(sameLength)
+					++originalIdx;
 			}
 			else
 				++originalIdx;
@@ -72,21 +74,21 @@ public class OneAway
 		return true;
 	}
 
-	private static boolean checkForSingleSubstitute(String original, String edited) 
-	{
-		boolean edit = false;
-		for(int i = 0; i < original.length(); ++i)
-		{
-			if(original.charAt(i) != edited.charAt(i))
-			{
-				if(edit == true)
-					return false;
-				else
-					edit = true;
-			}
-		}
-		return true;
-	}
+//	private static boolean checkForSingleSubstitute(String original, String edited) 
+//	{
+//		boolean edit = false;
+//		for(int i = 0; i < original.length(); ++i)
+//		{
+//			if(original.charAt(i) != edited.charAt(i))
+//			{
+//				if(edit == true)
+//					return false;
+//				else
+//					edit = true;
+//			}
+//		}
+//		return true;
+//	}
 
 
 }
