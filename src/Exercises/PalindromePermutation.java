@@ -23,13 +23,15 @@ public class PalindromePermutation
 	}
 	
 	/*
+	 * OPTION 1: 
 	 * Count the number of characters in the string
 	 * Only 1 letter can occur an odd amount of times
+	 * Separate counting and identifying odd count into separate functions
 	 */
 	public static boolean PalindromePermutation(String s)
 	{
 		s = s.toLowerCase();
-		int[] numCharacters = new int[128];
+		int[] numCharacters = new int[128]; // O(1) in space
 		for(int i = 0; i < s.length(); ++i)
 		{
 			if((s.charAt(i) -'a' < 0) || (s.charAt(i) -'a' > 127))

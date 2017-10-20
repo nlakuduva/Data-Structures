@@ -1,0 +1,7 @@
+Bit wise toolkit:
+	exactly one bit in bit vector = bv & (1-bv) == 0
+	toggle the ith bit = 
+	ith index mask = 1 << index
+		if you're trying to turn a 0 --> 1 (i.e. ((bv & mask) == 0)) = bv |= mask
+		else if you're trying to turn a 1 --> 0 = (bv &= ~mask)
+		
