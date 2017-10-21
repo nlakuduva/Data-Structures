@@ -5,3 +5,7 @@ Bit wise toolkit:
 		if you're trying to turn a 0 --> 1 (i.e. ((bv & mask) == 0)) = bv |= mask
 		else if you're trying to turn a 1 --> 0 = (bv &= ~mask)
 		
+LinkedList:
+	detect if have loop = slow/fast runner 
+		if hop over (i.e. i   / i+1 then i -1 = (i+1)-2 --> guarantee)
+		

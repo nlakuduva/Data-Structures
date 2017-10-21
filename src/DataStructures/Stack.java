@@ -73,6 +73,13 @@ public class Stack<T>
 		return size;
 	}
 	
+	public void clear()
+	{
+		head = null;
+		tail = head;
+		size = 0;
+	}
+	
 	public String toString()
 	{
 		String s = new String();
