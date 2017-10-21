@@ -8,4 +8,15 @@ Bit wise toolkit:
 LinkedList:
 	detect if have loop = slow/fast runner 
 		if hop over (i.e. i   / i+1 then i -1 = (i+1)-2 --> guarantee)
-		
+
+Reverse an int:
+
+public int reverse(int x) {
+    int rev = 0;
+    while(x != 0){
+        rev = rev*10 + x%10;
+        x /= 10;
+    }
+ 
+    return rev;
+}
