@@ -35,14 +35,23 @@ public class SortStack
 
 	public static void sortStack(Stack<Integer> st)
 	{
+		if(st.getSize() <= 1)
+			return;
+		
 		Stack<Integer> helperSt = new Stack<Integer>();
 		int numSorted = 0;
-//		while(numSorted <= st.getSize()/2)
-		while(numSorted != st.getSize())
-			numSorted = moveToHelper(st, helperSt, numSorted);
+		while(numSorted <= st.getSize()/2)
+		{
+			moveToHelper(st, helperSt, numSorted);
+			moveToSt(helperSt, st, numSorted);
+			++numSorted;
+		}
+		moveBack(st, helperSt, numSorted);
+			
+
 	}
 	
-	private static int moveToHelper(Stack<Integer> st, Stack<Integer> helperSt, int numSorted)
+	private static void moveToHelper(Stack<Integer> st, Stack<Integer> helperSt, int numSorted)
 	{
 		int max = -1;
 		int valsVisited = st.getSize();
@@ -61,9 +70,27 @@ public class SortStack
 			--valsVisited;
 		}
 		st.push(max);
-		
-		moveBack(st, helperSt, numSorted);
-		return ++numSorted;
+	}
+	
+	private static void moveToSt(Stack<Integer> st, Stack<Integer> helperSt, int numSorted)
+	{
+		int min = Integer.MAX_VALUE;
+		int valsVisited = st.getSize();
+		while(!st.isEmpty() && valsVisited > numSorted)
+		{
+			int val = st.pop();
+			if(val < min)
+			{
+				if(min < Integer.MAX_VALUE)
+					helperSt.push(min);
+				min = val;
+			}
+			else
+				helperSt.push(val);
+			
+			--valsVisited;
+		}
+		st.push(min);
 	}
 	
 	private static void moveBack(Stack<Integer> st, Stack<Integer> helperSt, int numSorted)
@@ -71,5 +98,7 @@ public class SortStack
 		while(!helperSt.isEmpty())
 			st.push(helperSt.pop());
 	}
+	
+	
 
 }
